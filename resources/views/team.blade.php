@@ -377,7 +377,7 @@ use Illuminate\Support\Facades\URL;
                     <div class="col-lg-3 col-md-6">
                         <div class="member" data-aos="fade-up" data-aos-delay="100">
                         <div class="member-img">
-                            <img src="{{ asset('img/team/team19.jpeg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('img/team/team19a.jpeg') }}" class="img-fluid" alt="">
                             <div class="social">
                             <a href=""><i class="bi bi-twitter"></i></a>
                             <a href=""><i class="bi bi-instagram"></i></a>
