@@ -1,0 +1,139 @@
+body{
+    background: white;
+}
+.main {
+    position: relative; }
+  
+  .half {
+    height: 50vh;
+    background: white; }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 27%;
+    background: #001834;
+    /* box-shadow: 0.3px 0.3px 10px #001834; */
+    border-radius: 10px;
+    padding: 50px;
+    animation: 100ms load; }
+    .content h2 {
+        color: white;
+      text-align: center;
+      font-weight: bold; }
+  
+  .logo {
+    margin-bottom: 30px; }
+    .logo img {
+      height: 60px; }
+  
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
+    .form p {
+      padding: 0;
+      margin: 0; }
+    .form .btn {
+      margin: 30px 0px;
+      background: #3e97ff;
+      color: white;
+      transition: 300ms ease-in-out; }
+      .form .btn:hover {
+        background: white;
+        color: #001834; }
+    .form .text-group {
+      text-align: center; }
+  
+  .form-group {
+    margin-top: 30px;
+    position: relative; }
+  
+  .left-side {
+    top: 50%;
+    left: 20;
+    transform: translate(50%, -50%);
+    position: absolute; }
+    .left-side img {
+      width: 15px; }
+  
+  .right-side {
+    top: 50%;
+    right: 20px;
+    transform: translate(50%, -50%);
+    position: absolute; }
+    .right-side img {
+      width: 15px;
+      cursor: pointer; }
+  
+  .form-control {
+    padding-left: 30px;
+    /* border-color: $secondaryColor; */ }
+  
+  .hyperlink {
+    text-decoration: none; }
+  
+  .hyperlink:hover{
+    text-decoration: none;
+  }
+  
+  #myModal {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 10px;
+    overflow: hidden;
+    animation: load 300ms ease-in-out; }
+  
+  #mymodal_inner {
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    width: 20%; }
+  
+  .messages {
+    position: absolute;
+    top: 0; right: 0;
+    z-index: 100;
+    margin: 10px;
+  }
+  
+  @keyframes load {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  
+  @media only screen and (max-width: 1200px) {
+    .content {
+      width: 40%;
+      padding: 50px 30px; }
+    .logo img {
+      height: 50px; } }
+  
+  @media only screen and (max-width: 768px) {
+    .content {
+      width: 90%;
+      padding: 50px 30px; }
+    .logo img {
+      height: 50px; }
+    #mymodal_inner {
+      width: 95%; } }
+  
+  @media only screen and (max-height: 820px) {
+    .content-signup {
+      margin-top: 100px; } }
+  
+  @media only screen and (max-height: 570px) {
+    .content-signup {
+      margin-top: 200px; } }
