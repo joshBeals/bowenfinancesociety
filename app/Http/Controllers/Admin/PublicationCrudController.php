@@ -6,6 +6,7 @@ use App\Models\Publication;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\PublicationRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -88,16 +89,12 @@ class PublicationCrudController extends CrudController
         $this->crud->unsetValidation(); // validation has already been run
 
         $data = $this->crud->getStrippedSaveRequest();
-
-        // dd($data['file']);
-
-        $file_name = time().'_'.$data['file']->getClientOriginalName();
-
-        $file_path = $data['file']->storeAs('publications', $file_name, 'public');
+        
+        $uploadedFileUrl = Cloudinary::uploadFile($data['file']->getRealPath())->getSecurePath();
 
         $user = Publication::create([
             'name' => $data['name'],
-            'file_path' => '/storage/' . $file_path,
+            'file_path' => $uploadedFileUrl,
             'category' => $data['category'],
             'availability' => $data['availability'],
         ]);
@@ -109,7 +106,7 @@ class PublicationCrudController extends CrudController
     {
         $data = Publication::where('id', $id)->first();
 
-        return Redirect::to(URL::to($data->file_path));
+        return Redirect::to($data->file_path);
     }
 
     /**

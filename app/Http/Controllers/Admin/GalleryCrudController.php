@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use App\Http\Requests\GalleryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -87,13 +88,16 @@ class GalleryCrudController extends CrudController
 
         // dd($data['file']);
 
-        $file_name = time().'_'.$data['file']->getClientOriginalName();
+        
+        $uploadedFileUrl = Cloudinary::upload($data['file']->getRealPath())->getSecurePath();
 
-        $file_path = $data['file']->storeAs('gallery', $file_name, 'public');
+        // $file_name = time().'_'.$data['file']->getClientOriginalName();
+
+        // $file_path = $data['file']->storeAs('gallery', $file_name, 'public');
 
         $user = Gallery::create([
             'name' => $data['name'],
-            'file_path' => '/storage/' . $file_path
+            'file_path' => $uploadedFileUrl
         ]);
 
         return redirect('admin/gallery');
@@ -103,7 +107,7 @@ class GalleryCrudController extends CrudController
     {
         $data = Gallery::where('id', $id)->first();
 
-        return Redirect::to(URL::to($data->file_path));
+        return Redirect::to($data->file_path);
     }
 
     /**

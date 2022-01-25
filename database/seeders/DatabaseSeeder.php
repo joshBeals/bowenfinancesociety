@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Admin;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Admin::create([
+            'name' => 'BFS Admin',
+            'email' => 'admin@bfs.com',
+            'password' => '$2y$10$NiRUiorCUFAUN4UhO2jcSOARL8Hwoik.CBpBg6Z4QKTp4ZL4wbiie',
+        ]);
     }
 }
