@@ -16,7 +16,7 @@ This is a website for Bowen Finance Society
 <ul>
   <li>PHP</li>
   <li>Laravel</li>
-  <li>Laravel Backoffice</li>
+  <li>Backpack</li>
   <li>Bootstrap</li>
 </ul>
 
